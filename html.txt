@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ThinkWave — Ideas Worth Reading</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1a1a;
+  --paper: #faf8f5;
+  --cream: #f0ece4;
+  --rust: #c0392b;
+  --rust-light: #e74c3c;
+  --sand: #d4c5a9;
+  --muted: #7a7068;
+  --border: #e2ddd6;
+  --ad-bg: #f5f0e8;
+  --ad-border: #d4c5a9;
+  --white: #fff;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Merriweather',Georgia,serif;background:var(--paper);color:var(--ink);line-height:1.7}
+ 
+/* ── TOPBAR ── */
+.topbar{background:var(--ink);color:rgba(255,255,255,0.5);font-family:'Syne',sans-serif;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;text-align:center;padding:0.5rem 1rem}
+.topbar span{color:var(--sand)}
+ 
+/* ── HEADER ── */
+header{border-bottom:3px solid var(--ink);padding:0 2rem}
+.header-inner{max-width:1280px;margin:0 auto}
+.header-top{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 0 1rem}
+.site-name{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;letter-spacing:-0.04em;color:var(--ink);text-decoration:none}
+.site-name em{color:var(--rust);font-style:normal}
+.header-tagline{font-size:0.8rem;color:var(--muted);font-family:'Syne',sans-serif;letter-spacing:0.06em;text-transform:uppercase}
+.header-date{font-family:'Syne',sans-serif;font-size:0.78rem;color:var(--muted);letter-spacing:0.04em}
+ 
+/* Header Ad Banner */
+.header-ad{background:var(--ad-bg);border:1px solid var(--ad-border);text-align:center;padding:0.6rem 1rem;margin:0.5rem 0;border-radius:2px;position:relative}
+.ad-label{font-family:'Syne',sans-serif;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:0.3rem}
+.ad-728{display:flex;align-items:center;justify-content:center;height:64px;background:linear-gradient(135deg,#e8e0d4 0%,#d4c9ba 100%);border-radius:2px;gap:1.5rem;font-family:'Syne',sans-serif}
+.ad-728 .ad-icon{font-size:2rem}
+.ad-728 .ad-copy{text-align:left}
+.ad-728 .ad-copy strong{display:block;font-size:0.9rem;font-weight:700;color:var(--ink)}
+.ad-728 .ad-copy span{font-size:0.75rem;color:var(--muted)}
+.ad-728 .ad-btn{background:var(--rust);color:#fff;padding:0.4rem 1rem;border-radius:2px;font-size:0.78rem;font-weight:700;white-space:nowrap;cursor:pointer;border:none;font-family:'Syne',sans-serif}
+ 
+/* ── NAV ── */
+nav{border-top:1px solid var(--border)}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.nav-links{display:flex;list-style:none}
+.nav-links a{display:block;padding:0.85rem 1.2rem;font-family:'Syne',sans-serif;font-size:0.82rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;text-decoration:none;color:var(--ink);border-bottom:3px solid transparent;transition:all 0.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--rust);border-bottom-color:var(--rust)}
+.nav-search{display:flex;align-items:center;gap:0.5rem}
+.nav-search input{border:1px solid var(--border);padding:0.4rem 0.8rem;font-family:'Syne',sans-serif;font-size:0.8rem;border-radius:2px;background:var(--cream);outline:none;width:160px}
+.nav-search input:focus{border-color:var(--ink)}
+.nav-search button{background:var(--ink);color:#fff;border:none;padding:0.4rem 0.8rem;border-radius:2px;cursor:pointer;font-size:0.85rem}
+ 
+/* ── LAYOUT ── */
+.main-layout{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 300px;gap:3rem;padding:2.5rem 2rem}
+ 
+/* ── HERO ARTICLE ── */
+.hero-article{border-bottom:2px solid var(--ink);padding-bottom:2rem;margin-bottom:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+.hero-cat{font-family:'Syne',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--rust);margin-bottom:0.6rem;display:block}
+.hero-title{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;line-height:1.15;letter-spacing:-0.03em;margin-bottom:1rem;cursor:pointer;transition:color 0.2s}
+.hero-title:hover{color:var(--rust)}
+.hero-excerpt{font-size:0.95rem;color:var(--muted);line-height:1.75;margin-bottom:1.2rem;font-weight:300}
+.hero-meta{display:flex;align-items:center;gap:1rem;font-family:'Syne',sans-serif;font-size:0.75rem;color:var(--muted)}
+.author-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.7rem;color:#fff;flex-shrink:0}
+.hero-img{background:linear-gradient(135deg,#2c2c2c,#4a4040);border-radius:3px;height:280px;display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative;overflow:hidden}
+.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(45deg,rgba(192,57,43,0.15),transparent)}
+ 
+/* ── SECTION HEADING ── */
+.section-heading{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
+.section-heading h2{font-family:'Syne',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap}
+.section-heading::after{content:'';flex:1;height:1px;background:var(--border)}
+.section-heading.cat-color h2{color:var(--rust)}
+ 
+/* ── ARTICLE GRID ── */
+.articles-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.8rem;margin-bottom:2.5rem}
+.article-card{cursor:pointer;transition:transform 0.2s}
+.article-card:hover{transform:translateY(-2px)}
+.article-thumb{border-radius:3px;height:160px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin-bottom:0.9rem;position:relative;overflow:hidden}
+.article-cat{font-family:'Syne',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--rust);margin-bottom:0.4rem;display:block}
+.article-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;line-height:1.3;letter-spacing:-0.02em;margin-bottom:0.5rem;transition:color 0.2s}
+.article-card:hover .article-title{color:var(--rust)}
+.article-excerpt{font-size:0.82rem;color:var(--muted);line-height:1.65;font-weight:300;margin-bottom:0.7rem}
+.article-meta{font-family:'Syne',sans-serif;font-size:0.7rem;color:var(--muted);display:flex;gap:0.8rem;align-items:center}
+.article-meta .read-time{background:var(--cream);padding:0.1rem 0.4rem;border-radius:2px;font-weight:600}
+ 
+/* ── IN-CONTENT AD (between article rows) ── */
+.ad-inline{background:var(--ad-bg);border:1px solid var(--ad-border);padding:1rem 1.5rem;margin:1.5rem 0;border-radius:3px;display:flex;align-items:center;gap:1.5rem}
+.ad-inline .ad-visual{width:80px;height:60px;background:linear-gradient(135deg,#c8bfb0,#b0a898);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0}
+.ad-inline .ad-body{flex:1}
+.ad-inline .ad-body strong{display:block;font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:700;color:var(--ink);margin-bottom:0.2rem}
+.ad-inline .ad-body p{font-size:0.78rem;color:var(--muted);font-family:'Syne',sans-serif;line-height:1.4}
+.ad-inline .ad-body a{font-family:'Syne',sans-serif;font-size:0.75rem;font-weight:700;color:var(--rust);text-decoration:none;text-transform:uppercase;letter-spacing:0.08em}
+.ad-inline-right{text-align:right;font-family:'Syne',sans-serif;font-size:0.62rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase}
+ 
+/* ── LIST-STYLE ARTICLES ── */
+.articles-list{display:flex;flex-direction:column;gap:0}
+.list-article{display:grid;grid-template-columns:80px 1fr;gap:1rem;padding:1.2rem 0;border-bottom:1px solid var(--border);cursor:pointer;transition:all 0.2s}
+.list-article:hover .list-title{color:var(--rust)}
+.list-article:last-child{border-bottom:none}
+.list-num{font-family:'Syne',sans-serif;font-size:2.5rem;font-weight:800;color:var(--cream);line-height:1;letter-spacing:-0.04em;align-self:start;padding-top:0.2rem}
+.list-cat{font-family:'Syne',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--rust);margin-bottom:0.3rem}
+.list-title{font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700;line-height:1.3;transition:color 0.2s;margin-bottom:0.3rem}
+.list-meta{font-family:'Syne',sans-serif;font-size:0.7rem;color:var(--muted)}
+ 
+/* ── SIDEBAR ── */
+.sidebar{}
+.sidebar-sticky{position:sticky;top:1rem;display:flex;flex-direction:column;gap:1.8rem}
+ 
+/* Sidebar Ad Box */
+.ad-sidebar{background:var(--ad-bg);border:1px solid var(--ad-border);border-radius:3px;overflow:hidden}
+.ad-sidebar-inner{padding:1.2rem;text-align:center}
+.ad-300{background:linear-gradient(160deg,#e0d9cf,#cdc5b8);height:250px;border-radius:2px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.8rem;margin-bottom:0.6rem}
+.ad-300 .big-emoji{font-size:3rem}
+.ad-300 strong{font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700;color:var(--ink)}
+.ad-300 span{font-size:0.8rem;color:var(--muted);font-family:'Syne',sans-serif}
+.ad-300 button{background:var(--rust);color:#fff;border:none;padding:0.5rem 1.5rem;border-radius:2px;font-family:'Syne',sans-serif;font-size:0.8rem;font-weight:700;cursor:pointer}
+.ad-lbl-center{font-family:'Syne',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-align:center;padding:0.3rem}
+ 
+/* Sidebar Widgets */
+.widget{border-top:3px solid var(--ink);padding-top:1rem}
+.widget-title{font-family:'Syne',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink);margin-bottom:1rem}
+.trending-list{list-style:none;display:flex;flex-direction:column;gap:0.8rem}
+.trending-item{display:flex;gap:0.7rem;align-items:start;cursor:pointer;padding-bottom:0.8rem;border-bottom:1px solid var(--border)}
+.trending-item:last-child{border-bottom:none;padding-bottom:0}
+.tr-num{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--cream);line-height:1;flex-shrink:0;width:24px}
+.tr-info{}
+.tr-cat{font-family:'Syne',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--rust)}
+.tr-title{font-family:'Syne',sans-serif;font-size:0.83rem;font-weight:600;line-height:1.3;color:var(--ink);transition:color 0.2s}
+.trending-item:hover .tr-title{color:var(--rust)}
+ 
+/* Tags widget */
+.tags-cloud{display:flex;flex-wrap:wrap;gap:0.4rem}
+.tag{font-family:'Syne',sans-serif;font-size:0.72rem;font-weight:600;padding:0.3rem 0.7rem;border:1px solid var(--border);border-radius:2px;cursor:pointer;transition:all 0.2s;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted)}
+.tag:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+ 
+/* Newsletter widget */
+.newsletter{background:var(--ink);color:#fff;padding:1.5rem;border-radius:3px}
+.newsletter h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;margin-bottom:0.4rem;line-height:1.2}
+.newsletter p{font-size:0.78rem;color:rgba(255,255,255,0.55);font-family:'Syne',sans-serif;margin-bottom:1rem;line-height:1.5}
+.newsletter input{width:100%;padding:0.6rem 0.8rem;border:none;border-radius:2px;font-family:'Syne',sans-serif;font-size:0.82rem;margin-bottom:0.5rem;outline:none}
+.newsletter button{width:100%;background:var(--rust);color:#fff;border:none;padding:0.65rem;border-radius:2px;font-family:'Syne',sans-serif;font-size:0.82rem;font-weight:700;cursor:pointer;letter-spacing:0.06em;text-transform:uppercase;transition:background 0.2s}
+.newsletter button:hover{background:var(--rust-light)}
+ 
+/* ── FEATURED ROW (3 col) ── */
+.articles-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:2.5rem}
+ 
+/* ── PAGINATION ── */
+.pagination{display:flex;align-items:center;gap:0.4rem;margin:2rem 0;font-family:'Syne',sans-serif}
+.page-btn{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:2px;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all 0.2s;background:none;color:var(--ink)}
+.page-btn:hover,.page-btn.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.page-btn.next{width:auto;padding:0 1rem;gap:0.4rem}
+ 
+/* ── FOOTER AD ── */
+.footer-ad-strip{background:var(--cream);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1rem 2rem;max-width:1280px;margin:0 auto}
+.footer-ad-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem}
+.fad-col{flex:1;height:80px;background:linear-gradient(135deg,#ddd7ce,#c8c0b5);border-radius:2px;display:flex;align-items:center;justify-content:center;gap:1rem;font-family:'Syne',sans-serif;font-size:0.85rem;font-weight:600;color:var(--muted);cursor:pointer}
+ 
+/* ── FOOTER ── */
+footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:3rem 2rem 1.5rem}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.1)}
+.footer-brand{font-family:'Syne',sans-serif}
+.footer-brand .name{font-size:1.5rem;font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:0.4rem}
+.footer-brand .name em{color:var(--rust);font-style:normal}
+.footer-brand p{font-size:0.8rem;line-height:1.6;color:rgba(255,255,255,0.4)}
+.footer-col h4{font-family:'Syne',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#fff;margin-bottom:0.8rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
+.footer-col ul a{color:rgba(255,255,255,0.45);font-size:0.82rem;text-decoration:none;font-family:'Syne',sans-serif;transition:color 0.2s}
+.footer-col ul a:hover{color:#fff}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;font-family:'Syne',sans-serif;font-size:0.72rem;color:rgba(255,255,255,0.3)}
+ 
+/* ── ARTICLE MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;overflow-y:auto;padding:2rem 1rem}
+.modal-overlay.open{display:block}
+.modal{background:var(--paper);max-width:760px;margin:0 auto;border-radius:3px;overflow:hidden}
+.modal-header{padding:2rem 2.5rem 0}
+.modal-cat{font-family:'Syne',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--rust);margin-bottom:0.6rem;display:block}
+.modal-title{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;line-height:1.2;letter-spacing:-0.03em;margin-bottom:1rem}
+.modal-meta{font-family:'Syne',sans-serif;font-size:0.78rem;color:var(--muted);margin-bottom:1.5rem;display:flex;gap:1rem;align-items:center;border-bottom:1px solid var(--border);padding-bottom:1rem}
+.modal-hero{height:260px;background:linear-gradient(135deg,#3a3535,#5a4f4f);display:flex;align-items:center;justify-content:center;font-size:5rem;margin:0 2.5rem 0}
+.modal-body{padding:2rem 2.5rem}
+.modal-body p{margin-bottom:1.2rem;font-size:0.95rem;line-height:1.85;font-weight:300}
+.modal-body h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;margin:1.8rem 0 0.7rem;letter-spacing:-0.02em}
+ 
+/* In-article ad */
+.modal-ad{background:var(--ad-bg);border:1px solid var(--ad-border);padding:1rem 1.5rem;margin:1.5rem 0;border-radius:3px;display:flex;align-items:center;gap:1rem}
+.modal-ad .mad-img{width:72px;height:54px;background:linear-gradient(135deg,#c8bfb0,#b0a898);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0}
+.modal-ad .mad-copy strong{display:block;font-family:'Syne',sans-serif;font-size:0.85rem;font-weight:700;color:var(--ink)}
+.modal-ad .mad-copy span{font-size:0.75rem;color:var(--muted);font-family:'Syne',sans-serif}
+.modal-ad .mad-copy a{font-family:'Syne',sans-serif;font-size:0.72rem;font-weight:700;color:var(--rust);text-decoration:none;text-transform:uppercase;letter-spacing:0.08em}
+.modal-close{position:sticky;top:1rem;float:right;background:var(--ink);color:#fff;border:none;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;margin:1rem 1rem 0 0;z-index:10}
+ 
+/* Colors for article thumbs */
+.bg1{background:linear-gradient(135deg,#2d4a3e,#1a2d26)}
+.bg2{background:linear-gradient(135deg,#4a2d2d,#2d1a1a)}
+.bg3{background:linear-gradient(135deg,#2d3a4a,#1a2433)}
+.bg4{background:linear-gradient(135deg,#3a3a2d,#26261a)}
+.bg5{background:linear-gradient(135deg,#4a3a2d,#2d261a)}
+.bg6{background:linear-gradient(135deg,#2d2d4a,#1a1a2d)}
+.bg7{background:linear-gradient(135deg,#3a2d4a,#261a2d)}
+.bg8{background:linear-gradient(135deg,#4a4a2d,#2d2d1a)}
+ 
+/* Author avatar */
+.av{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.62rem;font-weight:700;color:#fff;vertical-align:middle}
+.av1{background:#c0392b}.av2{background:#2980b9}.av3{background:#27ae60}.av4{background:#8e44ad}.av5{background:#e67e22}.av6{background:#16a085}
+ 
+@media(max-width:900px){
+  .main-layout{grid-template-columns:1fr;padding:1.5rem 1rem}
+  .sidebar{display:none}
+  .hero-article{grid-template-columns:1fr}
+  .hero-img{height:200px}
+  .articles-grid,.articles-3{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-ad-inner{flex-wrap:wrap}
+  .fad-col{min-width:45%}
+}
+</style>
+</head>
+<body>
+ 
+<!-- TOP BAR -->
+<div class="topbar">
+  Thursday, March 26, 2026 &nbsp;·&nbsp; <span>Technology · Science · Culture · Health · Business</span>
+</div>
+ 
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="header-top">
+      <div>
+        <a href="#" class="site-name">Think<em>Wave</em></a>
+        <div class="header-tagline">Ideas Worth Reading</div>
+      </div>
+      <div class="header-date">Est. 2020 · Independent Publishing</div>
+    </div>
+ 
+    <!-- 🔴 AD: Header Leaderboard (728×90) -->
+    <div class="header-ad">
+      <span class="ad-label">Advertisement</span>
+      <div class="ad-728">
+        <div class="ad-icon">💼</div>
+        <div class="ad-copy">
+          <strong>Grow Your Business with Google Workspace</strong>
+          <span>Professional email, docs, and collaboration tools for teams of all sizes.</span>
+        </div>
+        <button class="ad-btn" onclick="window.open('https://workspace.google.com','_blank')">Get Started Free →</button>
+      </div>
+    </div>
+  </div>
+</header>
+ 
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <ul class="nav-links">
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#tech">Technology</a></li>
+      <li><a href="#science">Science</a></li>
+      <li><a href="#health">Health</a></li>
+      <li><a href="#business">Business</a></li>
+      <li><a href="#culture">Culture</a></li>
+      <li><a href="#world">World</a></li>
+    </ul>
+    <div class="nav-search">
+      <input type="text" placeholder="Search articles…">
+      <button>🔍</button>
+    </div>
+  </div>
+</nav>
+ 
+<!-- MAIN LAYOUT -->
+<div class="main-layout">
+ 
+  <!-- ═══ MAIN CONTENT ═══ -->
+  <main>
+ 
+    <!-- HERO ARTICLE -->
+    <div class="hero-article" onclick="openArticle(0)">
+      <div>
+        <span class="hero-cat">🔬 Science</span>
+        <h1 class="hero-title">Scientists Discover New Form of Quantum Entanglement That Could Reshape Computing Forever</h1>
+        <p class="hero-excerpt">Researchers at MIT and Stanford have jointly announced a breakthrough in quantum mechanics that allows particles to remain entangled across distances previously thought impossible, opening doors to quantum internet infrastructure.</p>
+        <div class="hero-meta">
+          <span class="av av1">JR</span>
+          <span><strong style="color:var(--ink)">James Rivera</strong> · Senior Science Editor</span>
+          <span>·</span>
+          <span>March 26, 2026</span>
+          <span>·</span>
+          <span>8 min read</span>
+        </div>
+      </div>
+      <div class="hero-img bg3">🔬</div>
+    </div>
+ 
+    <!-- SECTION: TOP STORIES -->
+    <div class="section-heading cat-color">
+      <h2>Top Stories</h2>
+    </div>
+ 
+    <div class="articles-grid">
+      <!-- Card 1 -->
+      <div class="article-card" onclick="openArticle(1)">
+        <div class="article-thumb bg1">🤖</div>
+        <span class="article-cat">💻 Technology</span>
+        <h3 class="article-title">AI Models Are Now Writing Code Better Than 90% of Human Developers, Study Finds</h3>
+        <p class="article-excerpt">A landmark benchmark by DeepMind shows the latest AI systems outperform most developers on real-world coding tasks, sparking debate about the future of software engineering jobs.</p>
+        <div class="article-meta">
+          <span class="av av2">SM</span>
+          <span>Sara Mitchell</span>
+          <span class="read-time">6 min</span>
+          <span>Mar 25</span>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="article-card" onclick="openArticle(2)">
+        <div class="article-thumb bg2">🌡️</div>
+        <span class="article-cat">🌍 Climate</span>
+        <h3 class="article-title">Ocean Temperatures Hit Record High for Fifth Consecutive Year, Scientists Warn of Tipping Points</h3>
+        <p class="article-excerpt">NOAA data confirms 2025 set another record for average ocean surface temperatures, with coral bleaching now affecting over 60% of the Great Barrier Reef.</p>
+        <div class="article-meta">
+          <span class="av av3">LP</span>
+          <span>Laura Park</span>
+          <span class="read-time">5 min</span>
+          <span>Mar 24</span>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- 🔴 AD: In-Feed Rectangle (between article rows) -->
+    <div class="ad-inline">
+      <div class="ad-visual">📱</div>
+      <div class="ad-body">
+        <strong>Samsung Galaxy S26 — Now Available</strong>
+        <p>Experience the next generation of mobile photography and AI-powered features.</p>
+        <a href="#">Shop Now — Starting at $799 →</a>
+      </div>
+      <div class="ad-inline-right">Ad · google.com</div>
+    </div>
+ 
+    <div class="articles-grid">
+      <!-- Card 3 -->
+      <div class="article-card" onclick="openArticle(3)">
+        <div class="article-thumb bg4">💊</div>
+        <span class="article-cat">🏥 Health</span>
+        <h3 class="article-title">New mRNA Vaccine Platform Could Eliminate Need for Annual Flu Shots Entirely</h3>
+        <p class="article-excerpt">Building on COVID-19 vaccine technology, Moderna and BioNTech are testing a universal influenza vaccine that targets conserved viral proteins.</p>
+        <div class="article-meta">
+          <span class="av av4">DK</span>
+          <span>Dr. David Kim</span>
+          <span class="read-time">7 min</span>
+          <span>Mar 23</span>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="article-card" onclick="openArticle(4)">
+        <div class="article-thumb bg5">💰</div>
+        <span class="article-cat">📈 Business</span>
+        <h3 class="article-title">S&P 500 Crosses 7,000 Points for First Time as Tech Earnings Surpass Expectations</h3>
+        <p class="article-excerpt">Major indices hit all-time highs following a blowout earnings season for tech giants. Apple, Nvidia, and Microsoft collectively added $800B in market cap this quarter.</p>
+        <div class="article-meta">
+          <span class="av av5">TC</span>
+          <span>Tom Chen</span>
+          <span class="read-time">4 min</span>
+          <span>Mar 22</span>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- SECTION: Technology -->
+    <div class="section-heading" id="tech" style="margin-top:2rem">
+      <h2>💻 Technology</h2>
+    </div>
+ 
+    <div class="articles-3">
+      <div class="article-card" onclick="openArticle(5)">
+        <div class="article-thumb bg6" style="height:130px">🚗</div>
+        <span class="article-cat">🚗 Automotive</span>
+        <h3 class="article-title">Tesla's Fully Autonomous Robotaxi Fleet Launches in 10 Major US Cities</h3>
+        <p class="article-excerpt">After years of delays, Tesla's driverless taxi service begins commercial operations with a $2.50/mile flat rate.</p>
+        <div class="article-meta"><span class="read-time">5 min</span><span>Mar 21</span></div>
+      </div>
+      <div class="article-card" onclick="openArticle(6)">
+        <div class="article-thumb bg7" style="height:130px">🥽</div>
+        <span class="article-cat">🥽 AR/VR</span>
+        <h3 class="article-title">Apple Vision Pro 3 Launches at $1,499 — A Device Finally Worth Buying</h3>
+        <p class="article-excerpt">The third-generation headset is lighter, cheaper, and finally has the app ecosystem to back it up.</p>
+        <div class="article-meta"><span class="read-time">6 min</span><span>Mar 20</span></div>
+      </div>
+      <div class="article-card" onclick="openArticle(7)">
+        <div class="article-thumb bg8" style="height:130px">🔋</div>
+        <span class="article-cat">⚡ Energy</span>
+        <h3 class="article-title">Solid-State Batteries Finally Hit Mass Production — A Decade in the Making</h3>
+        <p class="article-excerpt">Toyota and QuantumScape achieve what many thought impossible: commercially viable solid-state cells for EVs.</p>
+        <div class="article-meta"><span class="read-time">5 min</span><span>Mar 19</span></div>
+      </div>
+    </div>
+ 
+    <!-- 🔴 AD: In-Article Responsive -->
+    <div class="ad-inline" style="background:linear-gradient(135deg,#ede9e0,#e0dbd2)">
+      <div class="ad-visual">🏠</div>
+      <div class="ad-body">
+        <strong>Refinance Your Mortgage — Rates as Low as 5.2% APR</strong>
+        <p>Save thousands on your home loan. Get a personalized rate quote in 3 minutes with no impact on your credit score.</p>
+        <a href="#">Compare Rates Free →</a>
+      </div>
+      <div class="ad-inline-right">Sponsored · LendingTree</div>
+    </div>
+ 
+    <!-- SECTION: Most Read (list format) -->
+    <div class="section-heading" style="margin-top:2rem">
+      <h2>📰 Most Read This Week</h2>
+    </div>
+ 
+    <div class="articles-list">
+      <div class="list-article" onclick="openArticle(8)">
+        <div class="list-num">01</div>
+        <div>
+          <div class="list-cat">🌌 Space</div>
+          <div class="list-title">NASA's Artemis IV Crew Lands on the Lunar South Pole, Plants American Flag</div>
+          <div class="list-meta">March 20, 2026 · 10 min read · 2.4M views</div>
+        </div>
+      </div>
+      <div class="list-article" onclick="openArticle(9)">
+        <div class="list-num">02</div>
+        <div>
+          <div class="list-cat">🧠 Psychology</div>
+          <div class="list-title">Why Your Brain Is Lying to You About Productivity (And How to Stop It)</div>
+          <div class="list-meta">March 19, 2026 · 8 min read · 1.8M views</div>
+        </div>
+      </div>
+      <div class="list-article" onclick="openArticle(10)">
+        <div class="list-num">03</div>
+        <div>
+          <div class="list-cat">🍎 Nutrition</div>
+          <div class="list-title">The Definitive Guide to Intermittent Fasting in 2026: What Science Actually Says</div>
+          <div class="list-meta">March 18, 2026 · 12 min read · 1.5M views</div>
+        </div>
+      </div>
+      <div class="list-article" onclick="openArticle(11)">
+        <div class="list-num">04</div>
+        <div>
+          <div class="list-cat">💼 Finance</div>
+          <div class="list-title">Index Funds vs. AI-Managed Portfolios: A 5-Year Performance Showdown</div>
+          <div class="list-meta">March 17, 2026 · 9 min read · 1.2M views</div>
+        </div>
+      </div>
+      <div class="list-article" onclick="openArticle(12)">
+        <div class="list-num">05</div>
+        <div>
+          <div class="list-cat">🌿 Environment</div>
+          <div class="list-title">Countries That Went 100% Renewable Energy — And What Happened Next</div>
+          <div class="list-meta">March 16, 2026 · 7 min read · 980K views</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- 🔴 AD: Mid-content banner -->
+    <div class="ad-inline" style="margin-top:2rem">
+      <div class="ad-visual">📚</div>
+      <div class="ad-body">
+        <strong>Coursera — Learn from the World's Top Universities</strong>
+        <p>Earn verified certificates from Harvard, Stanford, and Yale. Start any course free for 7 days.</p>
+        <a href="#">Browse 7,000+ Courses →</a>
+      </div>
+      <div class="ad-inline-right">Ad · Coursera</div>
+    </div>
+ 
+    <!-- SECTION: Health & Science -->
+    <div class="section-heading" id="science" style="margin-top:2rem">
+      <h2>🏥 Health & Science</h2>
+    </div>
+ 
+    <div class="articles-3">
+      <div class="article-card" onclick="openArticle(13)">
+        <div class="article-thumb bg2" style="height:130px">🧬</div>
+        <span class="article-cat">🧬 Genetics</span>
+        <h3 class="article-title">CRISPR Gene Therapy Reverses Type 1 Diabetes in Human Trials for First Time</h3>
+        <p class="article-excerpt">Participants in a Stanford trial show complete insulin independence 18 months after a single gene-editing treatment.</p>
+        <div class="article-meta"><span class="read-time">8 min</span><span>Mar 18</span></div>
+      </div>
+      <div class="article-card" onclick="openArticle(14)">
+        <div class="article-thumb bg1" style="height:130px">🧘</div>
+        <span class="article-cat">🧠 Mental Health</span>
+        <h3 class="article-title">Psilocybin-Assisted Therapy Approved by FDA for Treatment-Resistant Depression</h3>
+        <p class="article-excerpt">After decades of research, psychedelic-assisted therapy earns mainstream medical validation in a historic ruling.</p>
+        <div class="article-meta"><span class="read-time">7 min</span><span>Mar 17</span></div>
+      </div>
+      <div class="article-card" onclick="openArticle(15)">
+        <div class="article-thumb bg3" style="height:130px">🦠</div>
+        <span class="article-cat">🔬 Biology</span>
+        <h3 class="article-title">Scientists Reverse Aging in Mice by 50% Using a Cocktail of Three Proteins</h3>
+        <p class="article-excerpt">The Salk Institute's latest longevity breakthrough brings age-reversal in humans one step closer to reality.</p>
+        <div class="article-meta"><span class="read-time">6 min</span><span>Mar 16</span></div>
+      </div>
+    </div>
+ 
+    <!-- 🔴 AD: Another in-content ad -->
+    <div class="ad-inline" style="margin-top:1.5rem">
+      <div class="ad-visual">✈️</div>
+      <div class="ad-body">
+        <strong>Expedia — Find Flights 40% Cheaper This Spring</strong>
+        <p>Book now and save big on flights, hotels, and vacation packages. Price match guaranteed.</p>
+        <a href="#">Search Deals →</a>
+      </div>
+      <div class="ad-inline-right">Ad · Expedia</div>
+    </div>
+ 
+    <!-- SECTION: Culture & World -->
+    <div class="section-heading" id="culture" style="margin-top:2rem">
+      <h2>🎭 Culture & World</h2>
+    </div>
+ 
+    <div class="articles-grid">
+      <div class="article-card" onclick="openArticle(16)">
+        <div class="article-thumb bg5">🎬</div>
+        <span class="article-cat">🎬 Film</span>
+        <h3 class="article-title">How Generative AI Transformed Hollywood — And Why Directors Are Fighting Back</h3>
+        <p class="article-excerpt">A deep dive into the growing tension between studio executives embracing AI production tools and the filmmakers who say it's eroding the soul of cinema.</p>
+        <div class="article-meta"><span class="av av6">AT</span><span>Ana Torres</span><span class="read-time">9 min</span></div>
+      </div>
+      <div class="article-card" onclick="openArticle(17)">
+        <div class="article-thumb bg7">🌐</div>
+        <span class="article-cat">🌐 Politics</span>
+        <h3 class="article-title">The Global Shift to 4-Day Work Weeks: Which Countries Are Winning?</h3>
+        <p class="article-excerpt">Iceland, Japan, and Germany report remarkable gains in productivity and worker well-being after nationwide pilots. Other nations are taking notes.</p>
+        <div class="article-meta"><span class="av av1">RN</span><span>Rachel Ng</span><span class="read-time">6 min</span></div>
+      </div>
+    </div>
+ 
+    <!-- Pagination -->
+    <div class="pagination">
+      <button class="page-btn active">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+      <button class="page-btn">4</button>
+      <button class="page-btn">5</button>
+      <span style="font-family:'Syne',sans-serif;font-size:0.82rem;color:var(--muted);padding:0 0.4rem">…</span>
+      <button class="page-btn">18</button>
+      <button class="page-btn next">Next →</button>
+    </div>
+ 
+  </main><!-- /main -->
+ 
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside class="sidebar">
+    <div class="sidebar-sticky">
+ 
+      <!-- 🔴 AD: Sidebar 300×250 -->
+      <div class="ad-sidebar">
+        <span class="ad-lbl-center">Advertisement</span>
+        <div class="ad-sidebar-inner">
+          <div class="ad-300">
+            <div class="big-emoji">☁️</div>
+            <strong>AWS Free Tier</strong>
+            <span>Build in the cloud today</span>
+            <button onclick="window.open('https://aws.amazon.com','_blank')">Start Free</button>
+          </div>
+        </div>
+        <span class="ad-lbl-center">Ad · amazon.com</span>
+      </div>
+ 
+      <!-- Trending Widget -->
+      <div class="widget">
+        <div class="widget-title">🔥 Trending Now</div>
+        <ul class="trending-list">
+          <li class="trending-item" onclick="openArticle(8)">
+            <span class="tr-num">1</span>
+            <div class="tr-info">
+              <div class="tr-cat">Space</div>
+              <div class="tr-title">NASA Artemis IV Lands on Lunar South Pole</div>
+            </div>
+          </li>
+          <li class="trending-item" onclick="openArticle(0)">
+            <span class="tr-num">2</span>
+            <div class="tr-info">
+              <div class="tr-cat">Science</div>
+              <div class="tr-title">New Quantum Entanglement Reshapes Computing</div>
+            </div>
+          </li>
+          <li class="trending-item" onclick="openArticle(3)">
+            <span class="tr-num">3</span>
+            <div class="tr-info">
+              <div class="tr-cat">Health</div>
+              <div class="tr-title">mRNA Vaccine Could End Annual Flu Shots</div>
+            </div>
+          </li>
+          <li class="trending-item" onclick="openArticle(13)">
+            <span class="tr-num">4</span>
+            <div class="tr-info">
+              <div class="tr-cat">Genetics</div>
+              <div class="tr-title">CRISPR Reverses Type 1 Diabetes in Humans</div>
+            </div>
+          </li>
+          <li class="trending-item" onclick="openArticle(5)">
+            <span class="tr-num">5</span>
+            <div class="tr-info">
+              <div class="tr-cat">Automotive</div>
+              <div class="tr-title">Tesla Robotaxi Launches in 10 US Cities</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+ 
+      <!-- 🔴 AD: Sidebar 300×250 #2 -->
+      <div class="ad-sidebar">
+        <span class="ad-lbl-center">Advertisement</span>
+        <div class="ad-sidebar-inner">
+          <div class="ad-300" style="background:linear-gradient(160deg,#d4e8c8,#b8d4a0)">
+            <div class="big-emoji">🌱</div>
+            <strong style="color:#1a3a0a">Go Green with SolarCity</strong>
+            <span style="color:#3a5a2a">Cut your energy bill by 60%</span>
+            <button style="background:#2e7d32">Get Free Quote</button>
+          </div>
+        </div>
+        <span class="ad-lbl-center">Ad · solarcity.com</span>
+      </div>
+ 
+      <!-- Tags -->
+      <div class="widget">
+        <div class="widget-title">🏷 Topics</div>
+        <div class="tags-cloud">
+          <span class="tag">AI</span>
+          <span class="tag">Climate</span>
+          <span class="tag">Health</span>
+          <span class="tag">Space</span>
+          <span class="tag">Finance</span>
+          <span class="tag">Politics</span>
+          <span class="tag">Science</span>
+          <span class="tag">Culture</span>
+          <span class="tag">Energy</span>
+          <span class="tag">Travel</span>
+          <span class="tag">Food</span>
+          <span class="tag">Tech</span>
+          <span class="tag">Crypto</span>
+          <span class="tag">Sports</span>
+          <span class="tag">Books</span>
+        </div>
+      </div>
+ 
+      <!-- Newsletter -->
+      <div class="newsletter">
+        <h3>Get the Daily Brief</h3>
+        <p>Top 5 stories every morning. No spam, unsubscribe anytime.</p>
+        <input type="email" placeholder="your@email.com">
+        <button>Subscribe Free</button>
+      </div>
+ 
+      <!-- 🔴 AD: Sidebar 300×600 tall -->
+      <div class="ad-sidebar">
+        <span class="ad-lbl-center">Advertisement</span>
+        <div class="ad-sidebar-inner">
+          <div class="ad-300" style="height:320px;background:linear-gradient(160deg,#1a237e,#283593);flex-direction:column">
+            <div class="big-emoji">📊</div>
+            <strong style="color:#fff">Trade Smarter</strong>
+            <span style="color:rgba(255,255,255,0.7);text-align:center;padding:0 1rem">Open a free account and get $0 commissions on stocks</span>
+            <button style="background:#4caf50">Start Investing →</button>
+          </div>
+        </div>
+        <span class="ad-lbl-center">Ad · fidelity.com</span>
+      </div>
+ 
+    </div>
+  </aside>
+ 
+</div><!-- /main-layout -->
+ 
+<!-- FOOTER AD STRIP -->
+<div style="border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--cream);padding:1rem 2rem">
+  <div style="max-width:1280px;margin:0 auto">
+    <div style="text-align:center;font-family:'Syne',sans-serif;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem">Advertisement</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem">
+      <div class="fad-col">🎓 <span>Udemy — Learn Any Skill Online · Courses from $9.99</span></div>
+      <div class="fad-col">🔒 <span>NordVPN — Stay Private Online · 65% Off Today</span></div>
+      <div class="fad-col">📦 <span>Squarespace — Build Your Website · Free 14-Day Trial</span></div>
+    </div>
+  </div>
+</div>
+ 
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="name">Think<em>Wave</em></div>
+        <p>Independent journalism covering technology, science, health, business, and culture. We believe in evidence-based reporting and ideas that matter.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#">Technology</a></li>
+          <li><a href="#">Science</a></li>
+          <li><a href="#">Health</a></li>
+          <li><a href="#">Business</a></li>
+          <li><a href="#">Culture</a></li>
+          <li><a href="#">World</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">Advertise</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="#">Ad Choices</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ThinkWave Media, Inc. All rights reserved.</span>
+      <span>Ads served by Google AdSense · <a href="#" style="color:rgba(255,255,255,0.4);text-decoration:none">Why these ads?</a></span>
+    </div>
+  </div>
+</footer>
+ 
+<!-- ARTICLE MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal" id="modal-content">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-header">
+      <span class="modal-cat" id="m-cat"></span>
+      <h2 class="modal-title" id="m-title"></h2>
+      <div class="modal-meta" id="m-meta"></div>
+    </div>
+    <div class="hero-img bg3" id="m-hero" style="margin:0 2.5rem;border-radius:3px;margin-top:1rem"></div>
+    <div class="modal-body" id="m-body"></div>
+  </div>
+</div>
+ 
+<script>
+const articles = [
+  {cat:"🔬 Science",title:"Scientists Discover New Form of Quantum Entanglement That Could Reshape Computing Forever",meta:"James Rivera · March 26, 2026 · 8 min read",hero:"bg3",emoji:"🔬",body:`<p>In a landmark joint announcement, researchers from MIT and Stanford have revealed the discovery of a previously unknown form of quantum entanglement that allows subatomic particles to maintain coherent connections across distances measured in kilometers rather than the centimeters previously considered the practical limit.</p><p>The phenomenon, which the team is calling "Extended Coherent Entanglement" or ECE, was first observed during experiments designed to probe the limits of Bell's theorem using a new type of photonic crystal developed in collaboration with IBM Research.</p><h3>What Makes This Different</h3><p>Traditional quantum entanglement, while scientifically verified, has always been fragile — any environmental disturbance "decoheres" the entangled particles, destroying the link. ECE appears to be significantly more robust, maintaining coherence even at room temperature in controlled atmospheric conditions.</p><p>"We honestly didn't believe what we were seeing at first," said Dr. Elena Vasquez, the lead researcher at MIT. "We ran the experiment 47 times with different particle pairs before we felt confident enough to publish."</p>
+<div class="modal-ad"><div class="mad-img">💻</div><div class="mad-copy"><strong>IBM Quantum Network — Join Today</strong><span>Access real quantum computers through the cloud.</span><br><a href="#">Learn More →</a></div></div>
+<h3>Implications for Computing</h3><p>The discovery has immediate implications for quantum networking and cryptography. Current quantum key distribution systems require expensive cryogenic infrastructure to maintain entanglement over fiber optic cables. ECE could make quantum-encrypted communications practical at a fraction of the current cost.</p><p>Quantum computing firms including Google, IBM, and IonQ saw their stock prices jump between 12-18% in after-hours trading following the announcement, a sign of how significant investors view the potential commercial applications.</p>`},
+  {cat:"💻 Technology",title:"AI Models Are Now Writing Code Better Than 90% of Human Developers, Study Finds",meta:"Sara Mitchell · March 25, 2026 · 6 min read",hero:"bg1",emoji:"🤖",body:`<p>A comprehensive benchmark study published by DeepMind has concluded that the latest generation of large language models can outperform the majority of human software engineers on standardized real-world coding tasks — a finding that has ignited fierce debate across the technology industry.</p><p>The study, titled "Beyond HumanEval: A Real-World Assessment of AI Coding Capability," evaluated six frontier AI models against 500 professional developers using a battery of tasks drawn from actual production codebases at 20 anonymous tech companies.</p><h3>The Numbers</h3><p>The top-performing AI model, which DeepMind declined to name citing commercial agreements, successfully completed 84% of tasks that fell within the difficulty range achieved by fewer than 10% of human participants. The model also demonstrated the ability to identify security vulnerabilities in legacy code with 94% accuracy — significantly above the human average of 61%.</p>
+<div class="modal-ad"><div class="mad-img">📱</div><div class="mad-copy"><strong>GitHub Copilot — AI Pair Programming</strong><span>Write code faster with AI suggestions.</span><br><a href="#">Try Free for 30 Days →</a></div></div>
+<p>Not everyone is convinced the comparison is meaningful. "Benchmarks measure what benchmarks measure," said Dr. Patricia Hoffman of Carnegie Mellon's Software Engineering Institute. "Real software engineering involves requirements gathering, stakeholder management, systems thinking. AI can write a function; it can't run a sprint planning meeting."</p>`},
+  {cat:"🌍 Climate",title:"Ocean Temperatures Hit Record High for Fifth Consecutive Year",meta:"Laura Park · March 24, 2026 · 5 min read",hero:"bg2",emoji:"🌡️",body:`<p>For the fifth consecutive year, global average ocean surface temperatures have broken previous records, according to data released by the National Oceanic and Atmospheric Administration (NOAA) and independently verified by the Copernicus Climate Change Service.</p><p>The 2025 annual average of 20.78°C (69.40°F) surpassed the 2024 record by 0.14°C — a margin that climate scientists describe as "alarming" given the already elevated baseline.</p><h3>Coral Catastrophe</h3><p>The sustained elevated temperatures have triggered what researchers are calling a "mega-bleaching event" across the Great Barrier Reef. Aerial and underwater surveys conducted in February 2026 found bleaching affecting approximately 62% of surveyed reef areas — up from 44% in 2024.</p>
+<div class="modal-ad"><div class="mad-img">🌿</div><div class="mad-copy"><strong>Offset Your Carbon Footprint Today</strong><span>Support certified climate projects with Gold Standard.</span><br><a href="#">Calculate Your Impact →</a></div></div>
+<p>"What we're witnessing is not a temporary disruption — it is a fundamental restructuring of marine ecosystems," said Dr. Ove Hoegh-Guldberg of the University of Queensland. "Many of these reefs will not recover within our lifetimes."</p>`},
+  {cat:"🏥 Health",title:"New mRNA Vaccine Platform Could Eliminate Need for Annual Flu Shots Entirely",meta:"Dr. David Kim · March 23, 2026 · 7 min read",hero:"bg4",emoji:"💊",body:`<p>Scientists at Moderna and BioNTech, building on the mRNA vaccine technology that produced the COVID-19 vaccines, are reporting early-stage clinical success with a "universal" influenza vaccine that could provide lasting protection against a wide range of flu strains — potentially ending the need for reformulated shots every year.</p><p>The vaccine works by targeting the stalk region of the hemagglutinin protein, a part of the influenza virus that remains relatively constant across different strains, as opposed to the head region that mutates rapidly and forces annual vaccine updates.</p><h3>Trial Results</h3><p>Phase II clinical trial results, published in the New England Journal of Medicine, show the experimental vaccine provided "significant cross-protection" against all 12 influenza A and B strains tested in 1,400 participants over an 18-month follow-up period.</p>
+<div class="modal-ad"><div class="mad-img">💊</div><div class="mad-copy"><strong>GoodRx — Save Up to 80% on Prescriptions</strong><span>Compare pharmacy prices near you instantly.</span><br><a href="#">Find My Savings →</a></div></div>
+<p>The immune response generated was robust and durable, with antibody levels remaining elevated at the 18-month mark — a promising sign that the protection may last multiple seasons.</p>`},
+  {cat:"📈 Business",title:"S&P 500 Crosses 7,000 Points for the First Time as Tech Earnings Surpass All Expectations",meta:"Tom Chen · March 22, 2026 · 4 min read",hero:"bg5",emoji:"💰",body:`<p>The S&P 500 closed above 7,000 points for the first time in history on Thursday, driven by a wave of better-than-expected earnings from the technology sector and renewed optimism about the Federal Reserve's path toward interest rate cuts.</p><p>The index closed at 7,018.34, up 1.42% on the day, capping a remarkable quarter in which the benchmark gained nearly 11% — its best quarterly performance since Q4 2023.</p><h3>Tech Giants Lead the Charge</h3><p>The rally was led by the "Magnificent Five" — Apple, Nvidia, Microsoft, Alphabet, and Meta — which collectively reported earnings that beat analyst consensus estimates by an average of 18%. Nvidia in particular stunned markets by reporting datacenter revenue of $48.2 billion in the quarter, nearly doubling year-over-year.</p>
+<div class="modal-ad"><div class="mad-img">📊</div><div class="mad-copy"><strong>Fidelity — Start Investing Today</strong><span>$0 commissions on stock and ETF trades.</span><br><a href="#">Open Free Account →</a></div></div>
+<p>The milestone has reignited debate among market analysts about valuation. "At these levels, we're pricing in a lot of perfection," cautioned Liz Young Thomas, chief investment strategist at SoFi. "One miss from a mega-cap could reverse weeks of gains."</p>`},
+  {cat:"🚗 Automotive",title:"Tesla's Fully Autonomous Robotaxi Fleet Launches in 10 Major US Cities",meta:"Alex Wong · March 21, 2026 · 5 min read",hero:"bg6",emoji:"🚗",body:`<p>After years of promises, regulatory battles, and public skepticism, Tesla has officially launched its fully driverless robotaxi service in 10 major US metropolitan areas, charging a flat rate of $2.50 per mile with no surge pricing and no driver gratuity required.</p><p>The service, branded "Tesla Ride," is available in Los Angeles, San Francisco, Austin, Phoenix, Miami, Nashville, Denver, Seattle, Boston, and Chicago. Unlike Waymo's geofenced approach, Tesla's vehicles operate across entire metro areas including highways.</p>
+<div class="modal-ad"><div class="mad-img">🚗</div><div class="mad-copy"><strong>Compare EV Insurance Rates</strong><span>Save up to $800/year on your electric vehicle.</span><br><a href="#">Get Free Quotes →</a></div></div>
+<p>The launch follows the removal of the vehicle's physical steering wheel and pedals in the production Model Y variant used for the fleet, a design change that required individual waivers from the National Highway Traffic Safety Administration (NHTSA) in each state where the service operates.</p>`},
+  {cat:"🥽 AR/VR",title:"Apple Vision Pro 3 Launches at $1,499 — A Device Finally Worth Buying",meta:"Mike Torres · March 20, 2026 · 6 min read",hero:"bg7",emoji:"🥽",body:`<p>Apple's third-generation spatial computing headset, the Vision Pro 3, goes on sale today at a price point that represents a 57% reduction from the original $3,499 launch price — and for the first time, the combination of hardware, software, and application ecosystem finally makes a compelling case for mainstream adoption.</p><p>The device weighs just 285 grams, down from 600g on the original, and achieves this through a new carbon fiber composite frame and a custom display architecture that reduces the number of components by 40%.</p>
+<div class="modal-ad"><div class="mad-img">🥽</div><div class="mad-copy"><strong>Apple Store — Pre-Order Vision Pro 3</strong><span>Free delivery. 14-day return window.</span><br><a href="#">Order Now →</a></div></div>
+<p>Battery life — the achilles heel of previous generations — now reaches six hours of mixed use and up to nine hours of video playback, compared to two hours on the original. A new external battery pack option extends this to 12+ hours for power users.</p>`},
+  {cat:"⚡ Energy",title:"Solid-State Batteries Finally Hit Mass Production — A Decade in the Making",meta:"Chen Wei · March 19, 2026 · 5 min read",hero:"bg8",emoji:"🔋",body:`<p>What was once the holy grail of battery technology — solid-state cells that promise double the energy density, faster charging, and dramatically improved safety compared to conventional lithium-ion batteries — has finally reached commercial mass production, with Toyota and QuantumScape jointly announcing the opening of a dedicated manufacturing facility in Ohio.</p><p>The facility, a $4.7 billion investment, will initially produce enough battery cells for approximately 150,000 vehicles annually, with plans to scale to 500,000 by 2028.</p>
+<div class="modal-ad"><div class="mad-img">⚡</div><div class="mad-copy"><strong>ChargePoint — Find EV Charging Near You</strong><span>70,000+ charging locations across North America.</span><br><a href="#">Download App Free →</a></div></div>
+<p>The batteries offer a range boost of approximately 40% compared to the best current lithium-ion cells at equivalent volume, and can charge from 10% to 80% in under 12 minutes — approaching the refuelling convenience of gasoline vehicles.</p>`},
+  {cat:"🌌 Space",title:"NASA's Artemis IV Crew Lands on the Lunar South Pole, Plants American Flag",meta:"Dr. Sam Park · March 20, 2026 · 10 min read",hero:"bg3",emoji:"🚀",body:`<p>At 14:32 UTC on Thursday, March 19th, 2026, NASA's Artemis IV mission successfully landed on the lunar surface at Shackleton Crater's rim near the Moon's south pole — marking humanity's return to the lunar surface for the first time since Apollo 17 in December 1972.</p><p>Commander Jessica Watkins and Lunar Module Pilot Victor Glover became the first humans to set foot on the Moon's south pole, a region of immense scientific interest due to the presence of water ice in permanently shadowed craters.</p><h3>The Historic Moments</h3><p>Following a four-hour equipment check after landing, Watkins descended the ladder to become the first woman to walk on the Moon. "This is one small step for a woman, one giant leap for all of humankind," she said, in a nod to Neil Armstrong's famous words.</p>
+<div class="modal-ad"><div class="mad-img">🌌</div><div class="mad-copy"><strong>NASA+ Streaming — Watch Space History Live</strong><span>Free access to all NASA missions and documentaries.</span><br><a href="#">Stream Free →</a></div></div>
+<p>The crew spent approximately 7 hours on the lunar surface, collecting rock and ice samples, deploying scientific instruments, and driving the new pressurized lunar rover approximately 3.2 km from the landing site to a site identified from orbital imagery as likely containing accessible subsurface ice.</p>`},
+  {cat:"🧠 Psychology",title:"Why Your Brain Is Lying to You About Productivity (And How to Stop It)",meta:"Dr. Lisa Hoffman · March 19, 2026 · 8 min read",hero:"bg5",emoji:"🧠",body:`<p>There's a particular kind of exhaustion that comes not from hard work, but from the constant, grinding feeling that you're not working hard enough. You've crossed things off your list, you've been busy all day — yet you end the afternoon with a creeping sense of failure. This is not laziness. This is your brain's threat-detection system misfiring in a world it wasn't designed for.</p><p>Cognitive neuroscientists have a name for the constellation of mental habits responsible for this experience: "productivity dysphoria." It's not a clinical diagnosis, but it describes a real and measurable pattern of thought that appears to be strongly correlated with chronic stress, burnout, and reduced actual output.</p><h3>The Planning Fallacy on Steroids</h3><p>Most people are familiar with the planning fallacy — the tendency to underestimate how long tasks will take. But productivity dysphoria involves a more pernicious distortion: systematically overestimating how much you should be able to accomplish in a day, based on an idealized version of yourself that doesn't account for cognitive fatigue, context-switching costs, or basic biological needs.</p>
+<div class="modal-ad"><div class="mad-img">🧘</div><div class="mad-copy"><strong>Headspace — Meditate Your Way to Focus</strong><span>Join 70M+ people building better mental habits.</span><br><a href="#">Try 30 Days Free →</a></div></div>
+<p>Research from the University of Toronto found that knowledge workers overestimate their productive capacity by an average of 42% when planning their weekly workload. The result is a persistent backlog that generates chronic low-grade stress — the feeling of always being slightly behind.</p>`},
+  {cat:"🍎 Nutrition",title:"The Definitive Guide to Intermittent Fasting in 2026: What Science Actually Says",meta:"Dr. Sarah Lin · March 18, 2026 · 12 min read",hero:"bg4",emoji:"🍽️",body:`<p>Intermittent fasting has been both praised as a revolutionary approach to metabolic health and dismissed as a dangerous fad since it entered popular consciousness around 2012. A decade and hundreds of clinical studies later, what does the scientific evidence actually show — and who should (and shouldn't) consider it?</p><p>The honest answer is more nuanced than either its zealots or critics would have you believe. IF, when done correctly, produces real and measurable metabolic benefits in many people. It also fails spectacularly for others, and carries meaningful risks for specific populations that are almost never mentioned in wellness content.</p>
+<div class="modal-ad"><div class="mad-img">🥗</div><div class="mad-copy"><strong>MyFitnessPal — Track Your Nutrition Free</strong><span>Over 14 million foods in our database.</span><br><a href="#">Download Free →</a></div></div>
+<h3>What the Meta-Analyses Show</h3><p>The most comprehensive meta-analysis to date, published in the New England Journal of Medicine in 2024 and analyzing 89 randomized controlled trials with over 14,000 participants, found that various IF protocols (16:8, 5:2, ADF) produced statistically significant improvements in: fasting insulin and insulin sensitivity, LDL cholesterol and triglycerides, systolic blood pressure, and inflammatory markers including CRP and IL-6.</p><p>Weight loss outcomes were positive but modest — an average of 4.2kg over 12 weeks across protocols — and crucially, not significantly different from continuous caloric restriction when calories were matched.</p>`},
+  {cat:"💼 Finance",title:"Index Funds vs. AI-Managed Portfolios: A 5-Year Performance Showdown",meta:"Tom Chen · March 17, 2026 · 9 min read",hero:"bg1",emoji:"📊",body:`<p>Five years ago, a wave of "AI-powered" investment platforms launched promising to beat passive index strategies through sophisticated machine learning models that could identify patterns invisible to human analysts. Now that we have half a decade of real-world performance data, how did they actually do?</p><p>The short answer: not well enough to justify the fees, in most cases. But the story is considerably more interesting than that summary suggests.</p><h3>The Data</h3><p>A comparative analysis by Morningstar and the University of Chicago's Booth School of Business tracked 24 AI-driven robo-advisors and quant funds that launched between 2019-2021 against a simple 60/40 portfolio of Vanguard's S&P 500 and Total Bond Market index funds.</p>
+<div class="modal-ad"><div class="mad-img">📈</div><div class="mad-copy"><strong>Vanguard — Invest in Index Funds Today</strong><span>Low costs. Long-term results. Build wealth.</span><br><a href="#">Open Account Free →</a></div></div>
+<p>Over the five-year period ending December 31st, 2025, the passive 60/40 benchmark returned 68.4% cumulatively (12.2% annualized). Of the 24 AI-managed alternatives studied, only 6 outperformed this benchmark on a gross returns basis. After accounting for management fees (which averaged 0.45% annually, compared to 0.03% for the index), only 2 AI funds maintained a performance edge.</p>`},
+  {cat:"🌿 Environment",title:"Countries That Went 100% Renewable Energy — And What Happened Next",meta:"Laura Park · March 16, 2026 · 7 min read",hero:"bg1",emoji:"🌍",body:`<p>Iceland has been running on nearly 100% renewable electricity for decades. Costa Rica has achieved it for extended stretches. Norway now generates over 98% of its electricity from hydropower. As more nations push toward clean energy targets, it's worth examining what actually happens when a country makes the transition — the successes, the challenges, and the surprises.</p>
+<div class="modal-ad"><div class="mad-img">🌱</div><div class="mad-copy"><strong>Arcadia — Switch to Green Energy Today</strong><span>Connect any utility to 100% renewable power.</span><br><a href="#">Switch in 2 Minutes →</a></div></div>
+<p>The most consistent finding across case studies is that the transition to renewable energy, while requiring significant upfront infrastructure investment, dramatically reduces long-term energy costs and eliminates exposure to fossil fuel price volatility. Iceland's electricity prices are among the cheapest in Europe. Costa Rica exports electricity to neighboring countries.</p>`},
+  {cat:"🧬 Genetics",title:"CRISPR Gene Therapy Reverses Type 1 Diabetes in Human Trials for First Time",meta:"Dr. David Kim · March 18, 2026 · 8 min read",hero:"bg2",emoji:"🧬",body:`<p>In what researchers are calling the most significant development in diabetes treatment since the discovery of insulin, a Phase I/II clinical trial at Stanford University School of Medicine has demonstrated that a single CRISPR-based gene therapy treatment produced complete insulin independence in 11 of 17 participants with longstanding Type 1 diabetes.</p><p>The remaining six participants showed significant reduction in insulin requirements, with four achieving near-normal blood glucose regulation requiring only minimal insulin doses.</p>
+<div class="modal-ad"><div class="mad-img">💊</div><div class="mad-copy"><strong>Dexcom G8 CGM — Know Your Glucose in Real Time</strong><span>The world's most accurate continuous glucose monitor.</span><br><a href="#">Learn More →</a></div></div>
+<p>The therapy works by editing the genes of the patient's own regulatory T-cells to halt the autoimmune attack on the pancreatic beta cells — the root cause of Type 1 diabetes. Unlike islet cell transplantation, which requires ongoing immunosuppression, the edited T-cells appear to create a durable tolerance without the need for antirejection drugs.</p>`},
+  {cat:"🧠 Mental Health",title:"Psilocybin-Assisted Therapy Approved by FDA for Treatment-Resistant Depression",meta:"Dr. Mark Ellis · March 17, 2026 · 7 min read",hero:"bg1",emoji:"🧘",body:`<p>The U.S. Food and Drug Administration has approved psilocybin-assisted psychotherapy for treatment-resistant major depressive disorder, making it the first psychedelic compound to receive full regulatory approval in the United States for a psychiatric indication.</p><p>The approval, granted to Compass Pathways' synthetic psilocybin product COMP360, follows a Priority Review designation and covers a specific treatment protocol: two supervised 6-8 hour therapy sessions facilitated by trained therapists, combined with preparatory and integration sessions.</p>
+<div class="modal-ad"><div class="mad-img">🧠</div><div class="mad-copy"><strong>BetterHelp — Therapy From Your Phone</strong><span>Connect with a licensed therapist this week.</span><br><a href="#">Start Today →</a></div></div>
+<p>Clinical trials showed that 51% of participants with treatment-resistant depression experienced a clinically significant response after two sessions, compared to 20% in the placebo group. Remarkably, 29% achieved full remission — meaning their depression scores fell below the clinical threshold — a rate far exceeding any existing antidepressant.</p>`},
+  {cat:"🔬 Biology",title:"Scientists Reverse Aging in Mice by 50% Using a Cocktail of Three Proteins",meta:"James Rivera · March 16, 2026 · 6 min read",hero:"bg3",emoji:"🦠",body:`<p>Researchers at the Salk Institute for Biological Studies have published findings showing that a combination of three proteins, when periodically activated in aged mice, reversed multiple hallmarks of aging by approximately 50% and extended the remaining lifespan of treated animals by an average of 22% compared to controls.</p><p>The proteins — OCT4, SOX2, and KLF4 (three of the four Yamanaka factors used to create induced pluripotent stem cells) — were delivered using a modified adeno-associated virus vector that allowed researchers to switch their expression on and off using an oral medication.</p>
+<div class="modal-ad"><div class="mad-img">⚗️</div><div class="mad-copy"><strong>InsideTracker — Optimize Your Biological Age</strong><span>Blood testing + AI recommendations for longevity.</span><br><a href="#">Get Your First Test →</a></div></div>
+<p>The treated mice showed improvements in kidney function, muscle mass, cognitive performance on maze tests, and skin elasticity. Perhaps most strikingly, epigenetic age clocks — molecular markers that track biological aging independent of chronological age — showed that treated animals had a biological age approximately half their chronological age.</p>`},
+  {cat:"🎬 Film",title:"How Generative AI Transformed Hollywood — And Why Directors Are Fighting Back",meta:"Ana Torres · March 15, 2026 · 9 min read",hero:"bg5",emoji:"🎬",body:`<p>Eighteen months after the historic SAG-AFTRA strike that forced studios to negotiate digital likeness protections and AI disclosure requirements, the film industry finds itself in a strange new equilibrium: AI tools are now used in virtually every major production, yet a growing movement of auteur directors is making a point of rejecting them entirely — and marketing their films accordingly.</p>
+<div class="modal-ad"><div class="mad-img">🎬</div><div class="mad-copy"><strong>Letterboxd Pro — Track Every Film You Watch</strong><span>Join 10M+ film enthusiasts. Start your diary.</span><br><a href="#">Try Pro Free →</a></div></div>
+<p>The divide is splitting along predictable lines. Franchise productions and studio tentpoles have embraced AI-generated backgrounds, de-aging, crowd simulation, and increasingly, AI-written first draft scripts. Meanwhile, independent cinema — and a vocal contingent of A-list directors — is positioning "100% human-made" as a premium quality signal, the cinematic equivalent of an artisanal food label.</p>`},
+  {cat:"🌐 Politics",title:"The Global Shift to 4-Day Work Weeks: Which Countries Are Winning?",meta:"Rachel Ng · March 14, 2026 · 6 min read",hero:"bg7",emoji:"🌐",body:`<p>Four years after Iceland completed the world's largest trial of a four-day work week — covering 2.5% of its entire working population — the results have been clear enough that 86% of Icelandic workers have now moved to compressed or reduced working hours as standard practice. The question that governments around the world are now grappling with is: can this scale?</p><p>The short answer, based on evidence from a dozen subsequent national and regional pilots, is yes — but not uniformly, and not without addressing some thorny structural questions about how work is actually organized.</p>
+<div class="modal-ad"><div class="mad-img">🏢</div><div class="mad-copy"><strong>Slack — Where Work Happens Smarter</strong><span>Reduce meeting overload. Connect your team.</span><br><a href="#">Try Free for 90 Days →</a></div></div>
+<p>Japan's national pilot, which ran from 2023 to 2025 and included over 300,000 workers across 200 companies, showed productivity increases of 23% — attributed largely to the elimination of "performance theater" meetings and the compression of work into focused blocks. Employee-reported burnout dropped by 31%.</p>`}
+];
+ 
+function openArticle(i) {
+  const a = articles[i];
+  document.getElementById('m-cat').textContent = a.cat;
+  document.getElementById('m-title').textContent = a.title;
+  document.getElementById('m-meta').textContent = a.meta;
+  const hero = document.getElementById('m-hero');
+  hero.className = 'hero-img ' + a.hero;
+  hero.textContent = a.emoji;
+  hero.style.cssText = 'margin:0 2.5rem;border-radius:3px;margin-top:1rem;height:260px;font-size:5rem;display:flex;align-items:center;justify-content:center';
+  document.getElementById('m-body').innerHTML = a.body;
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+ 
+function closeModal(e) {
+  if (!e || e.target === document.getElementById('modal') || e.currentTarget.tagName === 'BUTTON') {
+    document.getElementById('modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+ 
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal({target:document.getElementById('modal')}); });
+</script>
+</body>
+</html>
+ 
